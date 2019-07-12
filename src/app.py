@@ -92,6 +92,6 @@ def fetch_eqs():
 def init():
     fetch_eqs()
     scheduler = BackgroundScheduler()
-    scheduler.add_job(func=fetch_eqs, trigger="interval", seconds=15)
+    scheduler.add_job(func=fetch_eqs, trigger="interval", minutes=59)
     scheduler.start()
     atexit.register(lambda: scheduler.shutdown())
