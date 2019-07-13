@@ -88,10 +88,16 @@ def fetch_eqs():
             collection.insert(to_insert)
 
 
+def ping():
+    site_url = "https://earthquakes-uncc-yes.herokuapp.com"
+    print(urllib.request.urlopen(site_url))
+
+
 @app.before_first_request
 def init():
     fetch_eqs()
     scheduler = BackgroundScheduler()
     scheduler.add_job(func=fetch_eqs, trigger="interval", minutes=25)
+    scheduler.add_job(func=ping, trigger="interval", minutes=25)
     scheduler.start()
     atexit.register(lambda: scheduler.shutdown())
