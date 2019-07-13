@@ -23,8 +23,7 @@ EQ_LIMIT = 50_000
 _uri = None
 if MLAB_URI is not None:
     _uri = MLAB_URI
-elif MLAB_USER is not None and MLAB_PWORD is not None and MLAB_PWORD is not None and MLAB_USER is not None \
-        and MLAB_DB is not None:
+elif MLAB_USER is not None and MLAB_PWORD is not None and MLAB_PWORD is not None and MLAB_USER is not None:
     _uri = f"mongodb://{MLAB_USER}:{MLAB_PWORD}@{MLAB_HOST}:{MLAB_PORT}/"
 
 if _uri is not None:
