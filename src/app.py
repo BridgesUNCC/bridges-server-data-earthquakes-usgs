@@ -54,6 +54,8 @@ def all_eq():
 def fetch_eqs():
     print(str(time.time()) + " EQ FETCH")
     url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_hour.geojson"
+    site_url = "https://earthquakes-uncc-yes.herokuapp.com"
+    print(urllib.request.urlopen(site_url))
     with urllib.request.urlopen(url) as json_data:
         data = json.loads(json_data.read().decode())
         db_ids = [item["id"] for item in list(collection.find({}, ['id'])) if "id" in item.keys()]
