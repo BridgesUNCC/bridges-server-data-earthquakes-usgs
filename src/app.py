@@ -42,12 +42,12 @@ def landing_page():
 
 @app.route('/eq/latest/<int:number>')
 def latest_eq(number):
-    return jsonify(earthquakes=json.loads(dumps(collection.find().sort("time", pymongo.DESCENDING).limit(int(number)))))
+    return jsonify(Earthquakes=json.loads(dumps(collection.find().sort("time", pymongo.DESCENDING).limit(int(number)))))
 
 
 @app.route('/eq')
 def all_eq():
-    return jsonify(earthquakes=json.loads(dumps(collection.find())))
+    return jsonify(Earthquakes=json.loads(dumps(collection.find())))
 
 
 def fetch_eqs():
