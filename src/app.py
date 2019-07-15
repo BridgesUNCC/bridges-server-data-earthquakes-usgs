@@ -42,7 +42,7 @@ def landing_page():
 
 @app.route('/eq/latest/<int:number>')
 def latest_eq(number):
-    return jsonify(Earthquakes=json.loads(dumps(collection.find().sort({time: pymongo.ASCENDING}).limit(int(number)))))
+    return jsonify(Earthquakes=json.loads(dumps(collection.find().sort({"properties.time": pymongo.ASCENDING}).limit(int(number)))))
 
 
 @app.route('/eq')
@@ -79,7 +79,7 @@ def fetch_eqs():
         if len(to_insert) != 0:
             if len(db_ids) >= EQ_LIMIT:
                 to_del = [item["id"] for item in list(collection.find({}, ['id'])
-                                                      .sort({time: pymongo.DESCENDING}).limit(len(to_insert)))
+                                                      .sort({"properties.time": pymongo.DESCENDING}).limit(len(to_insert)))
                           if "id" in item.keys()]
                 for i in to_del:
                     collection.remove({"id": i})
