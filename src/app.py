@@ -68,7 +68,7 @@ def fetch_eqs():
                         "place": props["place"],
                         "title": props["title"],
                         "url": props["url"],
-                        "time": props["time"]
+                        "time": str(props["time"])
                     },
                     "geometry": {
                         "coordinates": geom["coordinates"]
