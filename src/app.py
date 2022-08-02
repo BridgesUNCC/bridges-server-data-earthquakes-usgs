@@ -82,9 +82,9 @@ def fetch_eqs():
                                                       .sort("properties.time", pymongo.ASCENDING).limit(len(to_insert)))
                           if "id" in item.keys()]
                 for i in to_del:
-                    collection.remove({"id": i})
+                    collection.delete_one({"id": i})
 
-            collection.insert(to_insert)
+            collection.insert_many(to_insert)
 
 @app.before_first_request
 def init():
